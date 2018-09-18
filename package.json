@@ -20,7 +20,7 @@
     "coveralls": "3.0.0",
     "nock": "10.0.0",
     "nyc": "12.0.2",
-    "semantic-release": "15.7.1"
+    "semantic-release": "15.9.15"
   },
   "scripts": {
     "test": "npm run clean && npm run gardener && npm run test-simple",
