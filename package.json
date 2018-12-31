@@ -22,7 +22,7 @@
     "js-gardener": "1.33.0",
     "nock": "10.0.2",
     "nyc": "13.1.0",
-    "semantic-release": "15.11.0",
+    "semantic-release": "15.13.2",
     "timekeeper": "2.1.2"
   },
   "scripts": {
