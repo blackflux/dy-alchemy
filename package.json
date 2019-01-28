@@ -4,7 +4,7 @@
   "description": "Simplification of Amazon DynamoDB interactions",
   "main": "lib/index.js",
   "dependencies": {
-    "aws-sdk-wrap": "1.1.1",
+    "aws-sdk-wrap": "1.1.2",
     "dynamodb-lock-client": "0.4.0",
     "lodash.get": "4.4.2"
   },
