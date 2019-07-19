@@ -97,6 +97,7 @@ class Model {
   }
 
   async update({ id, data, fields }) {
+    this.precheck();
     try {
       await this.mapper.update(Object.assign(new this.InternalDataMapperClass(), data, { id }), {
         condition: {
