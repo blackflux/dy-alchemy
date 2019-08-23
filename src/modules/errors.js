@@ -42,16 +42,16 @@ class CannotUpdatePrimaryKeys extends Error {
 }
 module.exports.CannotUpdatePrimaryKeys = CannotUpdatePrimaryKeys;
 
-class MustProvideIdXorPrimaryKeys extends Error {
+class GeneratedIdMismatch extends Error {
   constructor() {
-    super('Provide either "primaryKeys" or "id", but not both.');
+    super('The generated id does not match the provided id for the DynamoDb entry.');
   }
 }
-module.exports.MustProvideIdXorPrimaryKeys = MustProvideIdXorPrimaryKeys;
+module.exports.GeneratedIdMismatch = GeneratedIdMismatch;
 
-class IncompletePrimaryKey extends Error {
+class UnableToGenerateId extends Error {
   constructor() {
-    super('All keys in "primaryKey" must be provided.');
+    super('Failed to generate id for DynamoDb entry.');
   }
 }
-module.exports.IncompletePrimaryKey = IncompletePrimaryKey;
+module.exports.UnableToGenerateId = UnableToGenerateId;

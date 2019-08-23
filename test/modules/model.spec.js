@@ -4,7 +4,7 @@ const DynamoModel = require('../../src/modules/model');
 const {
   DefaultItemExistsError, DefaultItemNotFoundError,
   InvalidPageCursor,
-  CannotUpdatePrimaryKeys, IncompletePrimaryKey, MustProvideIdXorPrimaryKeys
+  CannotUpdatePrimaryKeys, GeneratedIdMismatch, UnableToGenerateId
 } = require('../../src/modules/errors');
 
 
@@ -215,21 +215,22 @@ describe('Dynamo Sdk Tests', { useNock: true }, () => {
           fields: ['keywords']
         });
       } catch (err) {
-        expect(err).instanceof(IncompletePrimaryKey);
+        expect(err).instanceof(UnableToGenerateId);
       }
     });
 
-    it('Testing Create Both Provided Id and Primary Key', async () => {
+    it('Testing Provided Id and Generated Mismatch', async () => {
       try {
         await autoIdModel.create({
           id: 'uuid',
           data: {
-            keywords: ['keyword1', 'keyword2']
+            keywords: ['keyword1', 'keyword2'],
+            title: 'title'
           },
           fields: ['keywords']
         });
       } catch (err) {
-        expect(err).instanceof(MustProvideIdXorPrimaryKeys);
+        expect(err).instanceof(GeneratedIdMismatch);
       }
     });
 

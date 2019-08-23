@@ -6,8 +6,8 @@ const objectHash = require('object-hash');
 const { DataMapper, DynamoDbSchema, DynamoDbTable } = require('@aws/dynamodb-data-mapper');
 const {
   DefaultItemNotFoundError, DefaultItemExistsError,
-  CannotUpdatePrimaryKeys, MustProvideIdXorPrimaryKeys,
-  IncompletePrimaryKey
+  CannotUpdatePrimaryKeys, UnableToGenerateId,
+  GeneratedIdMismatch
 } = require('./errors');
 const { fromCursor, buildPageObject } = require('../util/paging');
 const { validate, extract, evaluate } = require('../util/conditional');
@@ -78,33 +78,32 @@ class Model {
   }
 
   // eslint-disable-next-line no-underscore-dangle
-  _extractPrimaryKey(data) {
-    assert(data instanceof Object && !Array.isArray(data), data);
-    if (Array.isArray(this.primaryKeys) && this.primaryKeys.some((k) => data[k] === undefined)) {
-      throw new IncompletePrimaryKey();
+  _generateId(id, modelData = null) {
+    let result = null;
+    if (typeof id === 'string') {
+      result = id;
     }
-    return objectHash(this.primaryKeys.reduce((prev, cur) => Object.assign(prev, { [cur]: data[cur] }), {}));
-  }
-
-  // eslint-disable-next-line no-underscore-dangle
-  _generateId(providedId) {
-    assert(typeof providedId === 'string' || (providedId instanceof Object && !Array.isArray(providedId)));
-    return typeof providedId === 'string'
-      ? providedId
-      // eslint-disable-next-line no-underscore-dangle
-      : this._extractPrimaryKey(providedId);
-  }
-
-  // eslint-disable-next-line no-underscore-dangle
-  _generatePutId(providedId, data) {
-    assert(typeof providedId === 'string' || providedId === null);
-    if ((typeof providedId !== 'string') === (!Array.isArray(this.primaryKeys))) {
-      throw new MustProvideIdXorPrimaryKeys();
+    const toCheck = [id, modelData];
+    for (let idx = 0; idx < toCheck.length; idx += 1) {
+      const data = toCheck[idx];
+      if (
+        data instanceof Object
+        && !Array.isArray(data)
+        && this.primaryKeys !== null
+        && this.primaryKeys.every((k) => data[k] !== undefined)
+      ) {
+        const generatedId = objectHash(this.primaryKeys
+          .reduce((prev, cur) => Object.assign(prev, { [cur]: data[cur] }), {}));
+        if (![null, generatedId].includes(result)) {
+          throw new GeneratedIdMismatch();
+        }
+        result = generatedId;
+      }
     }
-    return typeof providedId === 'string'
-      ? providedId
-      // eslint-disable-next-line no-underscore-dangle
-      : this._generateId(data);
+    if (typeof result !== 'string') {
+      throw new UnableToGenerateId();
+    }
+    return result;
   }
 
   async get({
@@ -160,7 +159,7 @@ class Model {
     // eslint-disable-next-line no-underscore-dangle
     this._before();
     // eslint-disable-next-line no-underscore-dangle
-    const id = this._generatePutId(providedId, data);
+    const id = this._generateId(providedId, data);
     const condition = {
       type: 'And',
       conditions: [
@@ -191,7 +190,7 @@ class Model {
     // eslint-disable-next-line no-underscore-dangle
     this._before();
     // eslint-disable-next-line no-underscore-dangle
-    const id = this._generateId(providedId);
+    const id = this._generateId(providedId, data);
     const condition = {
       type: 'And',
       conditions: [
@@ -228,7 +227,7 @@ class Model {
     // eslint-disable-next-line no-underscore-dangle
     this._before();
     // eslint-disable-next-line no-underscore-dangle
-    const id = this._generatePutId(providedId, data);
+    const id = this._generateId(providedId, data);
     const condition = { type: 'And', conditions };
     validate(condition);
     await this.mapper.put(
