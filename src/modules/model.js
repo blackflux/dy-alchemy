@@ -79,7 +79,12 @@ class Model {
 
   // eslint-disable-next-line no-underscore-dangle
   _generateId(id, modelData = null) {
-    assert(typeof id === 'string' || id === null || (id instanceof Object && !Array.isArray(id)), id);
+    assert(
+      typeof id === 'string'
+      || id === null
+      || (id instanceof Object && !Array.isArray(id) && this.primaryKeys.every((k) => id[k] !== undefined)),
+      id
+    );
     assert(modelData === null || (modelData instanceof Object && !Array.isArray(modelData)), modelData);
     let result = null;
     if (typeof id === 'string') {
