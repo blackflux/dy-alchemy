@@ -85,9 +85,7 @@ class Model {
     if (typeof id === 'string') {
       result = id;
     }
-    const toCheck = [id, modelData];
-    for (let idx = 0; idx < toCheck.length; idx += 1) {
-      const data = toCheck[idx];
+    [id, modelData].forEach((data) => {
       if (
         data instanceof Object
         && !Array.isArray(data)
@@ -101,7 +99,7 @@ class Model {
         }
         result = generatedId;
       }
-    }
+    });
     if (typeof result !== 'string') {
       throw new UnableToGenerateId();
     }
