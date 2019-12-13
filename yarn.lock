@@ -2005,10 +2005,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-dynamodb-lock-client@0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/dynamodb-lock-client/-/dynamodb-lock-client-0.6.1.tgz#3638cc78d9042bc65832feef33f234390bcb689d"
-  integrity sha512-2qCz3kCBif4N89AHs5W7ji23SJKy87mj+Jt86trihqg9zFHWtdbBFxXe2rBv1w+01lFZ7XYJMBkqaKxYbOBByw==
+dynamodb-lock-client@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/dynamodb-lock-client/-/dynamodb-lock-client-0.6.2.tgz#e8c2682cc0f768bb4820822bfbea652649be5327"
+  integrity sha512-MeYPXo2whZD/aowa4UFvY71dWEQ7TotpvGROTvLnkMBUf1e595dWWkxZExW//9l5MUhvyI4wZQCZOoXtRG58ug==
   dependencies:
     "@hapi/joi" "16.1.8"
 
