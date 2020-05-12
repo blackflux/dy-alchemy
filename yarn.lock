@@ -309,7 +309,7 @@
   resolved "https://registry.yarnpkg.com/@blackflux/robo-config-plugin/-/robo-config-plugin-3.1.5.tgz#cc353ebb7f20782d232e0c5f06dc4568fe88020c"
   integrity sha512-OGUIOnx9bdy/wUm+j3SlFh/lDpxiXMfsfdKbEEP9KyS0YIK1Za0mrJGshHvytwH3Q9K9fz01PgQ28fi98cWFJg==
 
-"@hapi/address@^4.0.0", "@hapi/address@^4.0.1":
+"@hapi/address@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-4.0.1.tgz#267301ddf7bc453718377a6fb3832a2f04a721dd"
   integrity sha512-0oEP5UiyV4f3d6cBL8F3Z5S7iWSX39Knnl0lY8i+6gfmmIBj44JCBNtcMgwyS+5v7j3VYavNay0NFHDS+UGQcw==
@@ -325,17 +325,6 @@
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.0.4.tgz#e80ad4e8e8d2adc6c77d985f698447e8628b6010"
   integrity sha512-EwaJS7RjoXUZ2cXXKZZxZqieGtc7RbvQhUy8FwDoMQtxWVi14tFjeFCYPZAM1mBCpOpiBpyaZbb9NeHc7eGKgw==
-
-"@hapi/joi@17.1.0":
-  version "17.1.0"
-  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-17.1.0.tgz#cc4000b6c928a6a39b9bef092151b6bdee10ce55"
-  integrity sha512-ob67RcPlwRWxBzLCnWvcwx5qbwf88I3ykD7gcJLWOTRfLLgosK7r6aeChz4thA3XRvuBfI0KB1tPVl2EQFlPXw==
-  dependencies:
-    "@hapi/address" "^4.0.0"
-    "@hapi/formula" "^2.0.0"
-    "@hapi/hoek" "^9.0.0"
-    "@hapi/pinpoint" "^2.0.0"
-    "@hapi/topo" "^5.0.0"
 
 "@hapi/joi@17.1.1":
   version "17.1.1"
@@ -2122,12 +2111,12 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-dynamodb-lock-client@0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/dynamodb-lock-client/-/dynamodb-lock-client-0.6.3.tgz#67531c7c1b5ee8456b0c73b5af8381272a5bdd6d"
-  integrity sha512-wWkGaOyWqtYosbipF0sJaNZcsCEV5PM3RSJ4HWQ/sEMRnSn8adiwPKeTcKonQcllww1XqOIzuOoG80Ff5mPLBg==
+dynamodb-lock-client@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/dynamodb-lock-client/-/dynamodb-lock-client-0.7.1.tgz#2fc1fb5526f59624488178a7a7a21097908eeafa"
+  integrity sha512-Cow6WLbcY0SdpI7slrFmczWyKA3/bOcOb/0K5i2m0n+eEDDx15H240Wc/x9D6cHVgSjesI4YPOQsXiOd5lpiPw==
   dependencies:
-    "@hapi/joi" "17.1.0"
+    "@hapi/joi" "17.1.1"
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
