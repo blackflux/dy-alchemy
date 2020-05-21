@@ -34,9 +34,6 @@
         "guid": {
           "B": "a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0ucLk2P6X2IFDDeTnVLQgW5wnzpZxUjHP/EM3NAyxECgA=="
         },
-        "lockAcquiredTimeUnixMs": {
-          "N": "1893448800000"
-        },
         "id": {
           "S": "lock-name-outer"
         }
@@ -83,9 +80,6 @@
         },
         "guid": {
           "B": "1HNeOiZeFu7gP1lxi5tdAwGcB9i2xR+Q2jpmbuwTqzUMCBc4KFg/xuzW7NvMp7aTnEnCQq1RB+Od63sKWZa5Aw=="
-        },
-        "lockAcquiredTimeUnixMs": {
-          "N": "1893448800000"
         },
         "id": {
           "S": "lock-name-inner"

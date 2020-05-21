@@ -34,9 +34,6 @@
         "guid": {
           "B": "a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0ucLk2P6X2IFDDeTnVLQgW5wnzpZxUjHP/EM3NAyxECgA=="
         },
-        "lockAcquiredTimeUnixMs": {
-          "N": "1893448800000"
-        },
         "id": {
           "S": "lock-failure"
         }
