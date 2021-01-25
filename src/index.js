@@ -1,9 +1,3 @@
-const Model = require('./modules/model');
-const lockManager = require('./modules/lock-manager');
-const errors = require('./modules/errors');
-
-module.exports = {
-  Model,
-  errors,
-  lockManager
+module.exports = () => {
+  throw new Error('Deprecated, please use aws-sdk-wrap instead.');
 };
